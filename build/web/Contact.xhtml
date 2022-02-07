@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Contact</title>
+    </h:head>
+    <h:body>
+        hello
+        <h:form>
+            <table border="2" align="center">
+                <tr>
+                    <th colspan="2">Add Contact</th>
+                </tr>
+                <tr>
+                    <td><h:outputLabel>Customer Name</h:outputLabel></td>
+                    <td><h:selectOneMenu required="true" value="#{contactManagedBean.custId}" id="cust">
+                            <f:selectItem itemDisabled="true" itemLabel="---Select Customer---"></f:selectItem>
+                            <f:selectItems value="#{customerManagedBean.allCustomer()}" var="cust" itemLabel="#{cust.customerName}" itemValue="#{cust.customerId}"></f:selectItems>
+                        </h:selectOneMenu></td>
+                </tr>
+
+                <tr>
+                    <td>Employee Name</td>
+                    <td><h:selectManyMenu required="true" value="#{contactManagedBean.empId}">
+                            <f:selectItem itemLabel="---Select Employee---" itemDisabled="true"></f:selectItem>
+                            <f:selectItems value="#{employeeManagedBean.allEmployee()}" var="emp" itemValue="#{emp.employeeId}" itemLabel="#{emp.employeeName}"></f:selectItems>   
+                        </h:selectManyMenu></td>
+                </tr>
+
+                <tr>
+                    <td><h:commandButton value="Add Contact" action="#{contactManagedBean.addCustomertoEmployee()}"></h:commandButton></td>
+                </tr>
+            </table>
+
+            <br/><br/>
+
+            <h2>Contact Value</h2>
+            <h:dataTable var="con" value="#" id="contact" border="2">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Customer Name</h:outputLabel>
+                    </f:facet>
+                    <h:outputText value="#"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Employee Name </h:outputLabel>
+                    </f:facet>
+                    <h:outputText value="#"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Action</h:outputLabel>
+                    </f:facet>
+                    <h:commandLink value="Edit" action="#"></h:commandLink>
+                    &nbsp;
+                    <h:commandLink value="Remove" action="#"></h:commandLink>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

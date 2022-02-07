@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Employee</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table border="2" align="center">
+                <tr>
+                    <th colspan="2">Add Employee</th>
+                </tr>
+                <tr>
+                    <td><p:outputLabel>Department Name</p:outputLabel></td>
+                    <td><p:selectOneMenu value="#{employeeManagedBean.deptId}" id="dept" required="true">
+                            <f:selectItem itemDisabled="true" itemLabel="---SelectDepartment---" itemValue="#" ></f:selectItem>
+                            <f:selectItems value="#{departmentManagedBean.allDepartment()}" var="dept" itemValue="#{dept.departmentId}" itemLabel="#{dept.departmentName}"></f:selectItems>
+                        </p:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td><p:outputLabel>Employee Name</p:outputLabel></td>
+                    <td><p:inputText value="#{employeeManagedBean.empName}"></p:inputText></td>
+                </tr>
+                <tr>
+                    <td><p:outputLabel>Salary</p:outputLabel></td>
+                    <td><p:inputText value="#{employeeManagedBean.salary}"></p:inputText></td>
+                </tr>
+                <tr>
+                    <td><h:commandButton value="Add Employee" action="#{employeeManagedBean.insertEmployee()}"></h:commandButton></td>
+                </tr>
+            </table>
+            
+            <br/><br/>
+            
+           
+        </h:form>
+    </h:body>
+</html>
+

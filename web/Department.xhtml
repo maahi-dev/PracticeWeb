@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Department</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table border="2" align="center">
+                <tr>
+                    <th colspan="2">Add Department</th>
+                </tr>
+                <tr>
+                    <td><h:outputLabel>Department Name</h:outputLabel></td>
+                    <td><h:inputText value="#{departmentManagedBean.departmentName}"></h:inputText></td>
+                </tr>
+                 <tr>
+                     <td><h:commandButton value="Add Department" action="#{departmentManagedBean.insertDepartment()}"></h:commandButton></td>
+                </tr>
+            </table>
+            <br/><br/>
+            <h2>Department Value</h2>
+            <h:dataTable var="dept" value="#{departmentManagedBean.allDepartment()}" id="department" border="2">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Department ID </h:outputLabel>
+                    </f:facet>
+                    <h:outputText value="#{dept.departmentId}"></h:outputText>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Department Name </h:outputLabel>
+                    </f:facet>
+                     <h:outputText value="#{dept.departmentName}"></h:outputText>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel>Action</h:outputLabel>
+                    </f:facet>
+                     <h:commandLink value="Edit" action="#"></h:commandLink>
+                     &nbsp;
+                     <h:commandLink value="Remove" action="#{departmentManagedBean.removeDepartment(dept.departmentId)}"></h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
